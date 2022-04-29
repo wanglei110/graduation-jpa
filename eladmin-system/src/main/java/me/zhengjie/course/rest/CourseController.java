@@ -15,6 +15,7 @@
 */
 package me.zhengjie.course.rest;
 
+import me.zhengjie.annotation.AnonymousAccess;
 import me.zhengjie.annotation.Log;
 import me.zhengjie.course.domain.Course;
 import me.zhengjie.course.service.CourseService;
@@ -54,15 +55,27 @@ public class CourseController {
     @GetMapping
     @Log("查询课程管理")
     @ApiOperation("查询课程管理")
-    @PreAuthorize("@el.check('course:list')")
+//    @PreAuthorize("@el.check('course:list')")
+    @AnonymousAccess
     public ResponseEntity<Object> queryCourse(CourseQueryCriteria criteria, Pageable pageable){
         return new ResponseEntity<>(courseService.queryAll(criteria,pageable),HttpStatus.OK);
     }
 
+    @AnonymousAccess
+    @GetMapping(value = "/query_by_id")
+    @Log("根据id查询课程管理")
+    @ApiOperation("查询课程管理")
+//    @PreAuthorize("@el.check('course:list')")
+    public ResponseEntity<Object> queryCourseById(@RequestParam Long id){
+        return new ResponseEntity<>(courseService.findById(id),HttpStatus.OK);
+    }
+
+
     @PostMapping
     @Log("新增课程管理")
     @ApiOperation("新增课程管理")
-    @PreAuthorize("@el.check('course:add')")
+//    @PreAuthorize("@el.check('course:add')")
+    @AnonymousAccess
     public ResponseEntity<Object> createCourse(@Validated @RequestBody Course resources){
         return new ResponseEntity<>(courseService.create(resources),HttpStatus.CREATED);
     }
@@ -70,16 +83,20 @@ public class CourseController {
     @PutMapping
     @Log("修改课程管理")
     @ApiOperation("修改课程管理")
-    @PreAuthorize("@el.check('course:edit')")
+//    @PreAuthorize("@el.check('course:edit')")
+    @AnonymousAccess
     public ResponseEntity<Object> updateCourse(@Validated @RequestBody Course resources){
         courseService.update(resources);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+
+
     @DeleteMapping
     @Log("删除课程管理")
     @ApiOperation("删除课程管理")
-    @PreAuthorize("@el.check('course:del')")
+//    @PreAuthorize("@el.check('course:del')")
+    @AnonymousAccess
     public ResponseEntity<Object> deleteCourse(@RequestBody Long[] ids) {
         courseService.deleteAll(ids);
         return new ResponseEntity<>(HttpStatus.OK);

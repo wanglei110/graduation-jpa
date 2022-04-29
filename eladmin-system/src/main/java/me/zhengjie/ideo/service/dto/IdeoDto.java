@@ -16,6 +16,7 @@
 package me.zhengjie.ideo.service.dto;
 
 import lombok.Data;
+
 import java.sql.Timestamp;
 import java.io.Serializable;
 
@@ -40,5 +41,5 @@ public class IdeoDto implements Serializable {
     /** 内容 */
     private String content;
 
-    private Long userId;
+    private IdeoUser user;
 }

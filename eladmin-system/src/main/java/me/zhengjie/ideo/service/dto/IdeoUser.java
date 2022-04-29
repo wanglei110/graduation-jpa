@@ -13,21 +13,34 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package me.zhengjie.modules.system.service.mapstruct;
+package me.zhengjie.ideo.service.dto;
 
-import me.zhengjie.base.BaseMapper;
-import me.zhengjie.course.domain.Course;
-import me.zhengjie.course.service.dto.CourseDto;
-import me.zhengjie.ideo.service.mapstruct.IdeoMapper;
-import me.zhengjie.modules.system.domain.User;
-import me.zhengjie.modules.system.service.dto.UserDto;
-import org.mapstruct.Mapper;
-import org.mapstruct.ReportingPolicy;
+import com.alibaba.fastjson.annotation.JSONField;
+import lombok.Data;
+import me.zhengjie.modules.system.service.dto.RoleName;
+import me.zhengjie.modules.system.service.dto.RoleSmallDto;
+
+import java.util.Set;
 
 /**
  * @author Zheng Jie
  * @date 2018-11-23
  */
-@Mapper(componentModel = "spring",uses = {RoleMapper.class, DeptMapper.class},unmappedTargetPolicy = ReportingPolicy.IGNORE)
-public interface UserMapper extends BaseMapper<UserDto, User> {
+@Data
+public class IdeoUser {
+
+    private Long id;
+
+    private Set<RoleName> roles;
+
+    private Long deptId;
+
+    private String username;
+
+    private String nickName;
+
+    private String gender;
+
+    @JSONField(serialize = false)
+    private Boolean isAdmin = false;
 }

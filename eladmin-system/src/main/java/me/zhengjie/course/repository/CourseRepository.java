@@ -18,6 +18,9 @@ package me.zhengjie.course.repository;
 import me.zhengjie.course.domain.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
 * @website https://el-admin.vip
@@ -25,4 +28,9 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 * @date 2022-04-26
 **/
 public interface CourseRepository extends JpaRepository<Course, Long>, JpaSpecificationExecutor<Course> {
+
+    @Transactional
+    @Modifying
+    @Query(value = "delete from course_ideo_elements where course_id=?1",nativeQuery = true)
+    void deleteCourseIdeoByCourseId(Long id);
 }

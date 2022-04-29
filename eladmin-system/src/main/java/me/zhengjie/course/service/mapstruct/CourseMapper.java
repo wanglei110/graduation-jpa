@@ -18,15 +18,17 @@ package me.zhengjie.course.service.mapstruct;
 import me.zhengjie.base.BaseMapper;
 import me.zhengjie.course.domain.Course;
 import me.zhengjie.course.service.dto.CourseDto;
+import me.zhengjie.ideo.service.mapstruct.IdeoMapper;
+import me.zhengjie.modules.system.domain.User;
+import me.zhengjie.modules.system.service.mapstruct.UserMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
 /**
-* @website https://el-admin.vip
 * @author wang
 * @date 2022-04-26
 **/
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring", uses={IdeoMapper.class, UserMapper.class},unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface CourseMapper extends BaseMapper<CourseDto, Course> {
 
 }

@@ -13,21 +13,20 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package me.zhengjie.modules.system.service.mapstruct;
+package me.zhengjie.modules.system.service.dto;
 
-import me.zhengjie.base.BaseMapper;
-import me.zhengjie.course.domain.Course;
-import me.zhengjie.course.service.dto.CourseDto;
-import me.zhengjie.ideo.service.mapstruct.IdeoMapper;
-import me.zhengjie.modules.system.domain.User;
-import me.zhengjie.modules.system.service.dto.UserDto;
-import org.mapstruct.Mapper;
-import org.mapstruct.ReportingPolicy;
+import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * @author Zheng Jie
  * @date 2018-11-23
  */
-@Mapper(componentModel = "spring",uses = {RoleMapper.class, DeptMapper.class},unmappedTargetPolicy = ReportingPolicy.IGNORE)
-public interface UserMapper extends BaseMapper<UserDto, User> {
+@Data
+public class RoleName implements Serializable {
+
+    private Long id;
+
+    private String name;
 }

@@ -16,6 +16,8 @@
 package me.zhengjie.course.service.impl;
 
 import me.zhengjie.course.domain.Course;
+import me.zhengjie.ideo.domain.Ideo;
+import me.zhengjie.ideo.repository.IdeoRepository;
 import me.zhengjie.utils.ValidationUtil;
 import me.zhengjie.utils.FileUtil;
 import lombok.RequiredArgsConstructor;
@@ -30,12 +32,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import me.zhengjie.utils.PageUtil;
 import me.zhengjie.utils.QueryHelp;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
 import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
 /**
 * @website https://el-admin.vip
@@ -49,6 +49,7 @@ public class CourseServiceImpl implements CourseService {
 
     private final CourseRepository courseRepository;
     private final CourseMapper courseMapper;
+    private final IdeoRepository ideoRepository;
 
     @Override
     public Map<String,Object> queryAll(CourseQueryCriteria criteria, Pageable pageable){
@@ -72,6 +73,7 @@ public class CourseServiceImpl implements CourseService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public CourseDto create(Course resources) {
+
         return courseMapper.toDto(courseRepository.save(resources));
     }
 
@@ -80,6 +82,13 @@ public class CourseServiceImpl implements CourseService {
     public void update(Course resources) {
         Course course = courseRepository.findById(resources.getId()).orElseGet(Course::new);
         ValidationUtil.isNull( course.getId(),"Course","id",resources.getId());
+        courseRepository.deleteCourseIdeoByCourseId(resources.getId());
+        Set<Ideo> ideoSet=new HashSet<>();
+        for(Ideo ideo:resources.getIdeos()){
+            ideo=ideoRepository.getOne(ideo.getId());
+            ideoSet.add(ideo);
+        }
+        resources.setIdeos(ideoSet);
         course.copy(resources);
         courseRepository.save(course);
     }
@@ -107,7 +116,7 @@ public class CourseServiceImpl implements CourseService {
             map.put("开课基层教学组织", course.getTeachingGroup());
             map.put("面向专业", course.getForProfessional());
             map.put("开课学期", course.getSemester());
-            map.put(" userId",  course.getUserId());
+            map.put(" userId",  course.getUser().getId());
             list.add(map);
         }
         FileUtil.downloadExcel(list, response);

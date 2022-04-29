@@ -16,8 +16,11 @@
 package me.zhengjie.course.service.dto;
 
 import lombok.Data;
+import me.zhengjie.ideo.service.dto.IdeoDto;
+
 import java.sql.Timestamp;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
 * @website https://el-admin.vip
@@ -64,8 +67,7 @@ public class CourseDto implements Serializable {
     /** 开课学期 */
     private Integer semester;
 
-    private Long userId;
+    private CourseUser user;
 
-
-
+    private Set<IdeoDto> ideos;
 }

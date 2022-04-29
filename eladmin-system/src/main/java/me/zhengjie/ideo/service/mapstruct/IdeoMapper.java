@@ -18,6 +18,7 @@ package me.zhengjie.ideo.service.mapstruct;
 import me.zhengjie.base.BaseMapper;
 import me.zhengjie.ideo.domain.Ideo;
 import me.zhengjie.ideo.service.dto.IdeoDto;
+import me.zhengjie.modules.system.service.mapstruct.UserMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
@@ -26,7 +27,7 @@ import org.mapstruct.ReportingPolicy;
 * @author wang
 * @date 2022-04-26
 **/
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring",  uses={UserMapper.class},unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface IdeoMapper extends BaseMapper<IdeoDto, Ideo> {
 
 }

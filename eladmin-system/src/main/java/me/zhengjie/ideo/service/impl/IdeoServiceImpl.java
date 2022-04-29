@@ -99,7 +99,7 @@ public class IdeoServiceImpl implements IdeoService {
             map.put("创建时间", ideo.getCreateTime());
             map.put("知识点", ideo.getKnowledgePoint());
             map.put("内容", ideo.getContent());
-            map.put(" userId",  ideo.getUserId());
+            map.put(" userId",  ideo.getUser().getId());
             list.add(map);
         }
         FileUtil.downloadExcel(list, response);

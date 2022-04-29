@@ -25,11 +25,13 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import me.zhengjie.ideo.domain.Ideo;
+import me.zhengjie.modules.system.domain.User;
 import org.hibernate.annotations.*;
 import java.sql.Timestamp;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
 * @website https://el-admin.vip
@@ -93,9 +95,11 @@ public class Course implements Serializable {
     @ApiModelProperty(value = "开课学期")
     private Integer semester;
 
-    @Column(name = "user_id")
+
+    @ManyToOne
     @ApiModelProperty(value = "userId")
-    private Long userId;
+    @JoinColumn(name="user_id")
+    private User user;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
@@ -104,7 +108,7 @@ public class Course implements Serializable {
             joinColumns = @JoinColumn(name="course_id",referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name="ideo_id",referencedColumnName = "id")
     )
-    private List<Ideo> elementsList=new ArrayList<>();
+    private Set<Ideo> ideos;
 
     public void copy(Course source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));

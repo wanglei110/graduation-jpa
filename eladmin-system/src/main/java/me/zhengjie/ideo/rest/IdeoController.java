@@ -15,6 +15,7 @@
 */
 package me.zhengjie.ideo.rest;
 
+import me.zhengjie.annotation.AnonymousAccess;
 import me.zhengjie.annotation.Log;
 import me.zhengjie.ideo.domain.Ideo;
 import me.zhengjie.ideo.service.IdeoService;
@@ -51,10 +52,12 @@ public class IdeoController {
         ideoService.download(ideoService.queryAll(criteria), response);
     }
 
+
     @GetMapping
     @Log("查询思政元素管理")
     @ApiOperation("查询思政元素管理")
-    @PreAuthorize("@el.check('ideo:list')")
+//    @PreAuthorize("@el.check('ideo:list')")
+    @AnonymousAccess
     public ResponseEntity<Object> queryIdeo(IdeoQueryCriteria criteria, Pageable pageable){
         return new ResponseEntity<>(ideoService.queryAll(criteria,pageable),HttpStatus.OK);
     }
@@ -62,7 +65,8 @@ public class IdeoController {
     @PostMapping
     @Log("新增思政元素管理")
     @ApiOperation("新增思政元素管理")
-    @PreAuthorize("@el.check('ideo:add')")
+//    @PreAuthorize("@el.check('ideo:add')")
+    @AnonymousAccess
     public ResponseEntity<Object> createIdeo(@Validated @RequestBody Ideo resources){
         return new ResponseEntity<>(ideoService.create(resources),HttpStatus.CREATED);
     }
@@ -70,7 +74,8 @@ public class IdeoController {
     @PutMapping
     @Log("修改思政元素管理")
     @ApiOperation("修改思政元素管理")
-    @PreAuthorize("@el.check('ideo:edit')")
+//    @PreAuthorize("@el.check('ideo:edit')")
+    @AnonymousAccess
     public ResponseEntity<Object> updateIdeo(@Validated @RequestBody Ideo resources){
         ideoService.update(resources);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -79,7 +84,8 @@ public class IdeoController {
     @DeleteMapping
     @Log("删除思政元素管理")
     @ApiOperation("删除思政元素管理")
-    @PreAuthorize("@el.check('ideo:del')")
+//    @PreAuthorize("@el.check('ideo:del')")
+    @AnonymousAccess
     public ResponseEntity<Object> deleteIdeo(@RequestBody Long[] ids) {
         ideoService.deleteAll(ids);
         return new ResponseEntity<>(HttpStatus.OK);

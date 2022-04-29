@@ -23,6 +23,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import me.zhengjie.modules.system.domain.User;
 import org.hibernate.annotations.*;
 import java.sql.Timestamp;
 import java.io.Serializable;
@@ -57,9 +59,10 @@ public class Ideo implements Serializable {
     @ApiModelProperty(value = "内容")
     private String content;
 
-    @Column(name = "user_id")
+    @ManyToOne
     @ApiModelProperty(value = "userId")
-    private Long userId;
+    @JoinColumn(name="user_id")
+    private User user;
 
     public void copy(Ideo source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));
