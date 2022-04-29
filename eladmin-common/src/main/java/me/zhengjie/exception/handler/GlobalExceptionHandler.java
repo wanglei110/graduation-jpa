@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ import java.util.Objects;
 import static org.springframework.http.HttpStatus.*;
 
 /**
- * @author Zheng Jie
+ * @author 
  * @date 2018-11-23
  */
 @Slf4j

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -19,8 +19,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * @author Zheng Jie
- * @website https://el-admin.vip
+ * @author 
+ * @website
  * @description
  * @date 2020-06-10
  **/

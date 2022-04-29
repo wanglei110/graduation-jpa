@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Objects;
 
 /**
- * @author Zheng Jie
+ * @author
  * @date 2018-12-26
  */
 @RestController

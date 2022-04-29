@@ -18,7 +18,7 @@
     </modules>
 
     <name>EL-ADMIN 后台管理</name>
-    <url>https://el-admin.vip</url>
+    <url></url>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
