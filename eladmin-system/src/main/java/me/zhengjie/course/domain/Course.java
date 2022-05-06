@@ -95,6 +95,10 @@ public class Course implements Serializable {
     @ApiModelProperty(value = "开课学期")
     private Integer semester;
 
+    @Column(name = "video_path")
+    @ApiModelProperty(value = "视频路径")
+    private String videoPath;
+
 
     @ManyToOne
     @ApiModelProperty(value = "userId")

@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-04-29T10:05:29+0800",
+    date = "2022-05-05T13:42:35+0800",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_281 (Oracle Corporation)"
 )
 @Component
@@ -51,6 +51,7 @@ public class CourseMapperImpl implements CourseMapper {
         course.setTeachingGroup( dto.getTeachingGroup() );
         course.setForProfessional( dto.getForProfessional() );
         course.setSemester( dto.getSemester() );
+        course.setVideoPath( dto.getVideoPath() );
         course.setUser( courseUserToUser( dto.getUser() ) );
         course.setIdeos( ideoDtoSetToIdeoSet( dto.getIdeos() ) );
 
@@ -77,6 +78,7 @@ public class CourseMapperImpl implements CourseMapper {
         courseDto.setTeachingGroup( entity.getTeachingGroup() );
         courseDto.setForProfessional( entity.getForProfessional() );
         courseDto.setSemester( entity.getSemester() );
+        courseDto.setVideoPath( entity.getVideoPath() );
         courseDto.setUser( userToCourseUser( entity.getUser() ) );
         courseDto.setIdeos( ideoSetToIdeoDtoSet( entity.getIdeos() ) );
 

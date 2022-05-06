@@ -101,4 +101,6 @@ public class CourseController {
         courseService.deleteAll(ids);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
 }

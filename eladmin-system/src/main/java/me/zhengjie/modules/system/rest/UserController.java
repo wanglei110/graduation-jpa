@@ -19,6 +19,7 @@ import cn.hutool.core.collection.CollectionUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import me.zhengjie.annotation.AnonymousAccess;
 import me.zhengjie.annotation.Log;
 import me.zhengjie.config.RsaProperties;
 import me.zhengjie.modules.system.domain.Dept;
@@ -198,4 +199,14 @@ public class UserController {
             throw new BadRequestException("角色权限不足");
         }
     }
+
+    @AnonymousAccess
+    @GetMapping(value = "/query_id")
+    @Log("返回当前登录用户id")
+    @ApiOperation("返回当前登录用户id")
+//    @PreAuthorize("@el.check('course:list')")
+    public ResponseEntity<Object> queryId(){
+        return new ResponseEntity<>(SecurityUtils.getCurrentUserId(),HttpStatus.OK);
+    }
+
 }

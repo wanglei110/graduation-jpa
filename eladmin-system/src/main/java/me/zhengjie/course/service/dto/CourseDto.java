@@ -67,6 +67,9 @@ public class CourseDto implements Serializable {
     /** 开课学期 */
     private Integer semester;
 
+    /**视频路径*/
+    private String videoPath;
+
     private CourseUser user;
 
     private Set<IdeoDto> ideos;

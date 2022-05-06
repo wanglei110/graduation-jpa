@@ -27,7 +27,7 @@ import java.util.Set;
 
 /**
 * @author
-* @date 2019-04-10
+* @date 2022-03-10
 */
 public interface DictService {
 

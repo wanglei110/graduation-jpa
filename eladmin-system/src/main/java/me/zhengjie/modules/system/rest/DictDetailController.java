@@ -38,25 +38,25 @@ import java.util.Map;
 
 /**
 * @author 
-* @date 2019-04-10
+* @date 2022-03-10
 */
 @RestController
 @RequiredArgsConstructor
-@Api(tags = "系统：字典详情管理")
+//@Api(tags = "系统：字典详情管理")
 @RequestMapping("/api/dictDetail")
 public class DictDetailController {
 
     private final DictDetailService dictDetailService;
     private static final String ENTITY_NAME = "dictDetail";
 
-    @ApiOperation("查询字典详情")
+//    @ApiOperation("查询字典详情")
     @GetMapping
     public ResponseEntity<Object> queryDictDetail(DictDetailQueryCriteria criteria,
                                          @PageableDefault(sort = {"dictSort"}, direction = Sort.Direction.ASC) Pageable pageable){
         return new ResponseEntity<>(dictDetailService.queryAll(criteria,pageable),HttpStatus.OK);
     }
 
-    @ApiOperation("查询多个字典详情")
+//    @ApiOperation("查询多个字典详情")
     @GetMapping(value = "/map")
     public ResponseEntity<Object> getDictDetailMaps(@RequestParam String dictName){
         String[] names = dictName.split("[,，]");
@@ -68,7 +68,7 @@ public class DictDetailController {
     }
 
     @Log("新增字典详情")
-    @ApiOperation("新增字典详情")
+//    @ApiOperation("新增字典详情")
     @PostMapping
     @PreAuthorize("@el.check('dict:add')")
     public ResponseEntity<Object> createDictDetail(@Validated @RequestBody DictDetail resources){
@@ -80,7 +80,7 @@ public class DictDetailController {
     }
 
     @Log("修改字典详情")
-    @ApiOperation("修改字典详情")
+//    @ApiOperation("修改字典详情")
     @PutMapping
     @PreAuthorize("@el.check('dict:edit')")
     public ResponseEntity<Object> updateDictDetail(@Validated(DictDetail.Update.class) @RequestBody DictDetail resources){
@@ -89,7 +89,7 @@ public class DictDetailController {
     }
 
     @Log("删除字典详情")
-    @ApiOperation("删除字典详情")
+//    @ApiOperation("删除字典详情")
     @DeleteMapping(value = "/{id}")
     @PreAuthorize("@el.check('dict:del')")
     public ResponseEntity<Object> deleteDictDetail(@PathVariable Long id){
