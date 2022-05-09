@@ -22,6 +22,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * @author 
@@ -30,9 +31,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/genConfig")
+@ApiIgnore
 public class GenConfigController {
 
     private final GenConfigService genConfigService;
+
 
     @GetMapping(value = "/{tableName}")
     public ResponseEntity<Object> queryGenConfig(@PathVariable String tableName){
