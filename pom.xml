@@ -4,20 +4,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>me.zhengjie</groupId>
-    <artifactId>eladmin</artifactId>
+    <groupId>me.wang</groupId>
+    <artifactId>course</artifactId>
     <packaging>pom</packaging>
     <version>2.6</version>
 
     <modules>
-        <module>eladmin-common</module>
-        <module>eladmin-logging</module>
-        <module>eladmin-system</module>
-        <module>eladmin-tools</module>
-        <module>eladmin-generator</module>
+        <module>course-common</module>
+        <module>course-logging</module>
+        <module>course-system</module>
+        <module>course-tools</module>
+        <module>course-generator</module>
     </modules>
 
-    <name>EL-ADMIN 后台管理</name>
+    <name>课程思政管理系统</name>
     <url></url>
 
     <parent>

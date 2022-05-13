@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/eladmin.iml" filepath="$PROJECT_DIR$/eladmin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/eladmin-common/eladmin-common.iml" filepath="$PROJECT_DIR$/eladmin-common/eladmin-common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/eladmin-generator/eladmin-generator.iml" filepath="$PROJECT_DIR$/eladmin-generator/eladmin-generator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/eladmin-logging/eladmin-logging.iml" filepath="$PROJECT_DIR$/eladmin-logging/eladmin-logging.iml" />
-      <module fileurl="file://$PROJECT_DIR$/eladmin-system/eladmin-system.iml" filepath="$PROJECT_DIR$/eladmin-system/eladmin-system.iml" />
-      <module fileurl="file://$PROJECT_DIR$/eladmin-tools/eladmin-tools.iml" filepath="$PROJECT_DIR$/eladmin-tools/eladmin-tools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/course.iml" filepath="$PROJECT_DIR$/course.iml" />
+      <module fileurl="file://$PROJECT_DIR$/course-common/course-common.iml" filepath="$PROJECT_DIR$/course-common/course-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/course-generator/course-generator.iml" filepath="$PROJECT_DIR$/course-generator/course-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/course-logging/course-logging.iml" filepath="$PROJECT_DIR$/course-logging/course-logging.iml" />
+      <module fileurl="file://$PROJECT_DIR$/course-system/course-system.iml" filepath="$PROJECT_DIR$/course-system/course-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/course-tools/course-tools.iml" filepath="$PROJECT_DIR$/course-tools/course-tools.iml" />
     </modules>
   </component>
 </project>

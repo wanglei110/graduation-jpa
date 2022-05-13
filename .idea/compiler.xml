@@ -7,29 +7,29 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="eladmin-logging" />
-        <module name="eladmin-common" />
-        <module name="eladmin-generator" />
-        <module name="eladmin-system" />
-        <module name="eladmin-tools" />
+        <module name="course-tools" />
+        <module name="course-logging" />
+        <module name="course-generator" />
+        <module name="course-system" />
+        <module name="course-common" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="eladmin" target="1.8" />
-      <module name="eladmin-common" target="1.8" />
-      <module name="eladmin-generator" target="1.8" />
-      <module name="eladmin-logging" target="1.8" />
-      <module name="eladmin-system" target="1.8" />
-      <module name="eladmin-tools" target="1.8" />
+      <module name="course" target="1.8" />
+      <module name="course-common" target="1.8" />
+      <module name="course-generator" target="1.8" />
+      <module name="course-logging" target="1.8" />
+      <module name="course-system" target="1.8" />
+      <module name="course-tools" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="eladmin-common" options="-parameters" />
-      <module name="eladmin-generator" options="-parameters" />
-      <module name="eladmin-logging" options="-parameters" />
-      <module name="eladmin-system" options="-parameters" />
-      <module name="eladmin-tools" options="-parameters" />
+      <module name="course-common" options="-parameters" />
+      <module name="course-generator" options="-parameters" />
+      <module name="course-logging" options="-parameters" />
+      <module name="course-system" options="-parameters" />
+      <module name="course-tools" options="-parameters" />
     </option>
   </component>
 </project>

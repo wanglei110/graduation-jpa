@@ -1,5 +1,5 @@
 /*
-*  Copyright 2019-2020 
+*  Copyright 2022-2022 
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -13,11 +13,11 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 */
-package me.zhengjie.gen.service;
+package me.wang.gen.service;
 
-import me.zhengjie.gen.domain.Course;
-import me.zhengjie.gen.service.dto.CourseDto;
-import me.zhengjie.gen.service.dto.CourseQueryCriteria;
+import me.wang.gen.domain.Course;
+import me.wang.gen.service.dto.CourseDto;
+import me.wang.gen.service.dto.CourseQueryCriteria;
 import org.springframework.data.domain.Pageable;
 import java.util.Map;
 import java.util.List;

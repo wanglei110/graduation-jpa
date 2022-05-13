@@ -1,5 +1,5 @@
 /*
-*  Copyright 2019-2020 
+*  Copyright 2022-2022 
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -13,12 +13,12 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 */
-package me.zhengjie.gen.rest;
+package me.wang.gen.rest;
 
-import me.zhengjie.annotation.Log;
-import me.zhengjie.gen.domain.Course;
-import me.zhengjie.gen.service.CourseService;
-import me.zhengjie.gen.service.dto.CourseQueryCriteria;
+import me.wang.annotation.Log;
+import me.wang.gen.domain.Course;
+import me.wang.gen.service.CourseService;
+import me.wang.gen.service.dto.CourseQueryCriteria;
 import org.springframework.data.domain.Pageable;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

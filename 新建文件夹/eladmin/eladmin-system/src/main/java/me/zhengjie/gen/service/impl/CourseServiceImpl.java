@@ -1,5 +1,5 @@
 /*
-*  Copyright 2019-2020 
+*  Copyright 2022-2022
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -13,23 +13,23 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 */
-package me.zhengjie.gen.service.impl;
+package me.wang.gen.service.impl;
 
-import me.zhengjie.gen.domain.Course;
-import me.zhengjie.utils.ValidationUtil;
-import me.zhengjie.utils.FileUtil;
+import me.wang.gen.domain.Course;
+import me.wang.utils.ValidationUtil;
+import me.wang.utils.FileUtil;
 import lombok.RequiredArgsConstructor;
-import me.zhengjie.gen.repository.CourseRepository;
-import me.zhengjie.gen.service.CourseService;
-import me.zhengjie.gen.service.dto.CourseDto;
-import me.zhengjie.gen.service.dto.CourseQueryCriteria;
-import me.zhengjie.gen.service.mapstruct.CourseMapper;
+import me.wang.gen.repository.CourseRepository;
+import me.wang.gen.service.CourseService;
+import me.wang.gen.service.dto.CourseDto;
+import me.wang.gen.service.dto.CourseQueryCriteria;
+import me.wang.gen.service.mapstruct.CourseMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import me.zhengjie.utils.PageUtil;
-import me.zhengjie.utils.QueryHelp;
+import me.wang.utils.PageUtil;
+import me.wang.utils.QueryHelp;
 import java.util.List;
 import java.util.Map;
 import java.io.IOException;
