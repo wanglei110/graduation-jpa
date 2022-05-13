@@ -87,9 +87,6 @@ public class UserServiceImpl implements UserService {
         if (userRepository.findByUsername(resources.getUsername()) != null) {
             throw new EntityExistException(User.class, "username", resources.getUsername());
         }
-//        if (userRepository.findByEmail(resources.getEmail()) != null) {
-//            throw new EntityExistException(User.class, "email", resources.getEmail());
-//        }
         if (userRepository.findByPhone(resources.getPhone()) != null) {
             throw new EntityExistException(User.class, "phone", resources.getPhone());
         }
@@ -102,14 +99,10 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findById(resources.getId()).orElseGet(User::new);
         ValidationUtil.isNull(user.getId(), "User", "id", resources.getId());
         User user1 = userRepository.findByUsername(resources.getUsername());
-//        User user2 = userRepository.findByEmail(resources.getEmail());
         User user3 = userRepository.findByPhone(resources.getPhone());
         if (user1 != null && !user.getId().equals(user1.getId())) {
             throw new EntityExistException(User.class, "username", resources.getUsername());
         }
-//        if (user2 != null && !user.getId().equals(user2.getId())) {
-//            throw new EntityExistException(User.class, "email", resources.getEmail());
-//        }
         if (user3 != null && !user.getId().equals(user3.getId())) {
             throw new EntityExistException(User.class, "phone", resources.getPhone());
         }
@@ -208,13 +201,6 @@ public class UserServiceImpl implements UserService {
         }};
     }
 
-//    @Override
-//    @Transactional(rollbackFor = Exception.class)
-//    public void updateEmail(String username, String email) {
-//        userRepository.updateEmail(username, email);
-//        flushCache(username);
-//    }
-
     @Override
     public void download(List<UserDto> queryAll, HttpServletResponse response) throws IOException {
         List<Map<String, Object>> list = new ArrayList<>();
@@ -224,8 +210,6 @@ public class UserServiceImpl implements UserService {
             map.put("用户名", userDTO.getUsername());
             map.put("角色", roles);
             map.put("部门", userDTO.getDept().getName());
-//            map.put("岗位", userDTO.getJobs().stream().map(JobSmallDto::getName).collect(Collectors.toList()));
-//            map.put("邮箱", userDTO.getEmail());
             map.put("状态", userDTO.getEnabled() ? "启用" : "禁用");
             map.put("手机号码", userDTO.getPhone());
             map.put("修改密码的时间", userDTO.getPwdResetTime());
