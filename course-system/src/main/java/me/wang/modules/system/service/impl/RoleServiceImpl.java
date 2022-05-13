@@ -183,20 +183,6 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void download(List<RoleDto> roles, HttpServletResponse response) throws IOException {
-        List<Map<String, Object>> list = new ArrayList<>();
-        for (RoleDto role : roles) {
-            Map<String, Object> map = new LinkedHashMap<>();
-            map.put("角色名称", role.getName());
-            map.put("角色级别", role.getLevel());
-            map.put("描述", role.getDescription());
-            map.put("创建日期", role.getCreateTime());
-            list.add(map);
-        }
-        FileUtil.downloadExcel(list, response);
-    }
-
-    @Override
     public void verification(Set<Long> ids) {
         if (userRepository.countByRoles(ids) > 0) {
             throw new BadRequestException("所选角色存在用户关联，请解除关联再试！");

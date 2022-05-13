@@ -79,13 +79,6 @@ public interface UserService {
      */
     Map<String, String> updateAvatar(MultipartFile file);
 
-//    /**
-//     * 修改邮箱
-//     * @param username 用户名
-//     * @param email 邮箱
-//     */
-//    void updateEmail(String username, String email);
-
     /**
      * 查询全部
      * @param criteria 条件
@@ -100,14 +93,6 @@ public interface UserService {
      * @return /
      */
     List<UserDto> queryAll(UserQueryCriteria criteria);
-
-    /**
-     * 导出数据
-     * @param queryAll 待导出的数据
-     * @param response /
-     * @throws IOException /
-     */
-    void download(List<UserDto> queryAll, HttpServletResponse response) throws IOException;
 
     /**
      * 用户自助修改资料

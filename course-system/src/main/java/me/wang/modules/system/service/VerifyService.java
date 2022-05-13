@@ -23,15 +23,6 @@ package me.wang.modules.system.service;
  */
 public interface VerifyService {
 
-//    /**
-//     * 发送验证码
-//     * @param email /
-//     * @param key /
-//     * @return /
-//     */
-//    EmailVo sendEmail(String email, String key);
-
-
     /**
      * 验证
      * @param code /

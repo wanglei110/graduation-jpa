@@ -20,20 +20,14 @@ import me.wang.annotation.Log;
 import me.wang.course.service.CourseService;
 import me.wang.course.service.dto.CourseQueryCriteria;
 import me.wang.course.domain.Course;
-import me.wang.repository.LocalStorageRepository;
-import me.wang.utils.NonStaticResourceHttpRequestHandler;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -49,17 +43,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CourseController {
 
     private final CourseService courseService;
-    private final LocalStorageRepository localStorageRepository;
-    @Autowired
-    private NonStaticResourceHttpRequestHandler nonStaticResourceHttpRequestHandler;
 
-    @Log("导出数据")
-    @ApiOperation("导出数据")
-    @GetMapping(value = "/download")
-    @PreAuthorize("@el.check('course:list')")
-    public void exportCourse(HttpServletResponse response, CourseQueryCriteria criteria) throws IOException {
-        courseService.download(courseService.queryAll(criteria), response);
-    }
 
     @GetMapping
     @Log("查询课程管理")

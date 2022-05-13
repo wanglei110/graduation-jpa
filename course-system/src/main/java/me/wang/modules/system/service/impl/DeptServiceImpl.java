@@ -149,19 +149,6 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    public void download(List<DeptDto> deptDtos, HttpServletResponse response) throws IOException {
-        List<Map<String, Object>> list = new ArrayList<>();
-        for (DeptDto deptDTO : deptDtos) {
-            Map<String,Object> map = new LinkedHashMap<>();
-            map.put("部门名称", deptDTO.getName());
-            map.put("部门状态", deptDTO.getEnabled() ? "启用" : "停用");
-            map.put("创建日期", deptDTO.getCreateTime());
-            list.add(map);
-        }
-        FileUtil.downloadExcel(list, response);
-    }
-
-    @Override
     public Set<DeptDto> getDeleteDepts(List<Dept> menuList, Set<DeptDto> deptDtos) {
         for (Dept dept : menuList) {
             deptDtos.add(deptMapper.toDto(dept));

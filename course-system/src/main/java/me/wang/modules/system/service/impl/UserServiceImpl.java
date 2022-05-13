@@ -201,24 +201,6 @@ public class UserServiceImpl implements UserService {
         }};
     }
 
-    @Override
-    public void download(List<UserDto> queryAll, HttpServletResponse response) throws IOException {
-        List<Map<String, Object>> list = new ArrayList<>();
-        for (UserDto userDTO : queryAll) {
-            List<String> roles = userDTO.getRoles().stream().map(RoleSmallDto::getName).collect(Collectors.toList());
-            Map<String, Object> map = new LinkedHashMap<>();
-            map.put("用户名", userDTO.getUsername());
-            map.put("角色", roles);
-            map.put("部门", userDTO.getDept().getName());
-            map.put("状态", userDTO.getEnabled() ? "启用" : "禁用");
-            map.put("手机号码", userDTO.getPhone());
-            map.put("修改密码的时间", userDTO.getPwdResetTime());
-            map.put("创建日期", userDTO.getCreateTime());
-            list.add(map);
-        }
-        FileUtil.downloadExcel(list, response);
-    }
-
     /**
      * 清理缓存
      *

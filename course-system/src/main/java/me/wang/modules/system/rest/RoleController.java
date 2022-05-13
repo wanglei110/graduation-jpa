@@ -61,13 +61,6 @@ public class RoleController {
         return new ResponseEntity<>(roleService.findById(id), HttpStatus.OK);
     }
 
-    @ApiOperation("导出角色数据")
-    @GetMapping(value = "/download")
-    @PreAuthorize("@el.check('role:list')")
-    public void exportRole(HttpServletResponse response, RoleQueryCriteria criteria) throws IOException {
-        roleService.download(roleService.queryAll(criteria), response);
-    }
-
     @ApiOperation("返回全部的角色")
     @GetMapping(value = "/all")
     @PreAuthorize("@el.check('roles:list','user:add','user:edit')")

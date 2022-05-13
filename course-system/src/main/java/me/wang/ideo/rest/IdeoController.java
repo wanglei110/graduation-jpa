@@ -44,15 +44,6 @@ public class IdeoController {
 
     private final IdeoService ideoService;
 
-    @Log("导出数据")
-    @ApiOperation("导出数据")
-    @GetMapping(value = "/download")
-    @PreAuthorize("@el.check('ideo:list')")
-    public void exportIdeo(HttpServletResponse response, IdeoQueryCriteria criteria) throws IOException {
-        ideoService.download(ideoService.queryAll(criteria), response);
-    }
-
-
     @GetMapping
     @Log("查询思政元素管理")
     @ApiOperation("查询思政元素管理")

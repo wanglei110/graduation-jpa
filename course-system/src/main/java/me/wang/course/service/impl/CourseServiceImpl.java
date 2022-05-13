@@ -125,28 +125,6 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void download(List<CourseDto> all, HttpServletResponse response) throws IOException {
-        List<Map<String, Object>> list = new ArrayList<>();
-        for (CourseDto course : all) {
-            Map<String,Object> map = new LinkedHashMap<>();
-            map.put("创建时间", course.getCreateTime());
-            map.put("课程名", course.getCourseName());
-            map.put("课程代码", course.getCourseCode());
-            map.put("课程类别", course.getCourseType());
-            map.put("课程性质(必修,选修等)", course.getCourseNature());
-            map.put("学分", course.getCredit());
-            map.put("总学时数", course.getTotalHours());
-            map.put("开课学院", course.getAcademy());
-            map.put("开课基层教学组织", course.getTeachingGroup());
-            map.put("面向专业", course.getForProfessional());
-            map.put("开课学期", course.getSemester());
-            map.put(" userId",  course.getUser().getId());
-            list.add(map);
-        }
-        FileUtil.downloadExcel(list, response);
-    }
-
-    @Override
     public void getCourseVideo(HttpServletRequest request, HttpServletResponse response, Long courseId) {
         try {
             LocalStorage localStorage = localStorageRepository.findByCourseIdAndType(courseId,"视频");

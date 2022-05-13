@@ -98,17 +98,4 @@ public class IdeoServiceImpl implements IdeoService {
         }
     }
 
-    @Override
-    public void download(List<IdeoDto> all, HttpServletResponse response) throws IOException {
-        List<Map<String, Object>> list = new ArrayList<>();
-        for (IdeoDto ideo : all) {
-            Map<String,Object> map = new LinkedHashMap<>();
-            map.put("创建时间", ideo.getCreateTime());
-            map.put("知识点", ideo.getKnowledgePoint());
-            map.put("内容", ideo.getContent());
-            map.put(" userId",  ideo.getUser().getId());
-            list.add(map);
-        }
-        FileUtil.downloadExcel(list, response);
-    }
 }

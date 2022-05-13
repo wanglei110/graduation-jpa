@@ -94,14 +94,6 @@ public interface MenuService {
     void delete(Set<Menu> menuSet);
 
     /**
-     * 导出
-     * @param queryAll 待导出的数据
-     * @param response /
-     * @throws IOException /
-     */
-    void download(List<MenuDto> queryAll, HttpServletResponse response) throws IOException;
-
-    /**
      * 懒加载菜单数据
      * @param pid /
      * @return /

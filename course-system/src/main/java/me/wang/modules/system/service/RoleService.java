@@ -107,14 +107,6 @@ public interface RoleService {
     List<RoleDto> queryAll(RoleQueryCriteria criteria);
 
     /**
-     * 导出数据
-     * @param queryAll 待导出的数据
-     * @param response /
-     * @throws IOException /
-     */
-    void download(List<RoleDto> queryAll, HttpServletResponse response) throws IOException;
-
-    /**
      * 获取用户权限信息
      * @param user 用户信息
      * @return 权限信息

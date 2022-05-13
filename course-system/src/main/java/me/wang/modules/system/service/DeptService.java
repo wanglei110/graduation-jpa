@@ -78,13 +78,7 @@ public interface DeptService {
      */
     Set<Dept> findByRoleId(Long id);
 
-    /**
-     * 导出数据
-     * @param queryAll 待导出的数据
-     * @param response /
-     * @throws IOException /
-     */
-    void download(List<DeptDto> queryAll, HttpServletResponse response) throws IOException;
+
 
     /**
      * 获取待删除的部门

@@ -77,14 +77,6 @@ public interface CourseService {
     void deleteAll(Long[] ids);
 
     /**
-    * 导出数据
-    * @param all 待导出的数据
-    * @param response /
-    * @throws IOException /
-    */
-    void download(List<CourseDto> all, HttpServletResponse response) throws IOException;
-
-    /**
      *获取对应课程的视频
      * */
     void getCourseVideo(HttpServletRequest request, HttpServletResponse response,Long courseId);

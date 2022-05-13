@@ -52,13 +52,6 @@ public class MenuController {
     private final MenuMapper menuMapper;
     private static final String ENTITY_NAME = "menu";
 
-    @ApiOperation("导出菜单数据")
-    @GetMapping(value = "/download")
-    @PreAuthorize("@el.check('menu:list')")
-    public void exportMenu(HttpServletResponse response, MenuQueryCriteria criteria) throws Exception {
-        menuService.download(menuService.queryAll(criteria, false), response);
-    }
-
     @GetMapping(value = "/build")
     @ApiOperation("获取前端所需菜单")
     public ResponseEntity<Object> buildMenus(){
