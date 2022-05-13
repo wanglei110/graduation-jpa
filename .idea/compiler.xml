@@ -9,7 +9,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="course-tools" />
         <module name="course-logging" />
-        <module name="course-generator" />
         <module name="course-system" />
         <module name="course-common" />
       </profile>
