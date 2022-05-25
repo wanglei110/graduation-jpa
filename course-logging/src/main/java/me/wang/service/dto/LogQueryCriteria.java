@@ -34,6 +34,9 @@ public class LogQueryCriteria {
     @Query
     private String logType;
 
+    @Query
+    private String username;
+
     @Query(type = Query.Type.BETWEEN)
     private List<Timestamp> createTime;
 }

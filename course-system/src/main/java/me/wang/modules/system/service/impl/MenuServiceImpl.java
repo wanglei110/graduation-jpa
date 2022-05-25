@@ -103,32 +103,40 @@ public class MenuServiceImpl implements MenuService {
         return menus.stream().map(menuMapper::toDto).collect(Collectors.toList());
     }
 
+    /**
+     * 新增菜单
+     * */
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void create(Menu resources) {
+        //根据菜单标题查询，如果不为null则已经存在
         if(menuRepository.findByTitle(resources.getTitle()) != null){
             throw new EntityExistException(Menu.class,"title",resources.getTitle());
         }
+        //根据菜单组件查询，如果不为null则已经存在
         if(StringUtils.isNotBlank(resources.getComponentName())){
             if(menuRepository.findByComponentName(resources.getComponentName()) != null){
                 throw new EntityExistException(Menu.class,"componentName",resources.getComponentName());
             }
         }
+        //如果pid为0则设为null，表示顶级菜单(目录)
         if(resources.getPid().equals(0L)){
             resources.setPid(null);
         }
-        if(resources.getIFrame()){
-            String http = "http://", https = "https://";
-            if (!(resources.getPath().toLowerCase().startsWith(http)||resources.getPath().toLowerCase().startsWith(https))) {
-                throw new BadRequestException("外链必须以http://或者https://开头");
-            }
-        }
+        //保存
         menuRepository.save(resources);
         // 计算子节点数目
         resources.setSubCount(0);
         // 更新父节点菜单数目
         updateSubCnt(resources.getPid());
     }
+
+//            if(resources.getIFrame()){
+//        String http = "http://", https = "https://";
+//        if (!(resources.getPath().toLowerCase().startsWith(http)||resources.getPath().toLowerCase().startsWith(https))) {
+//            throw new BadRequestException("外链必须以http://或者https://开头");
+//        }
+//    }
 
     @Override
     @Transactional(rollbackFor = Exception.class)

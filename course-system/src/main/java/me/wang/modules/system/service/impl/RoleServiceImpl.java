@@ -93,9 +93,11 @@ public class RoleServiceImpl implements RoleService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void create(Role resources) {
+        //根据角色名从数据库查询角色，结果不为null时表示已经存在相同角色名的角色
         if (roleRepository.findByName(resources.getName()) != null) {
             throw new EntityExistException(Role.class, "username", resources.getName());
         }
+        //将新增角色保存到数据库中
         roleRepository.save(resources);
     }
 

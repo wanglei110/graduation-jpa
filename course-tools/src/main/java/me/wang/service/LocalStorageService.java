@@ -58,7 +58,7 @@ public interface LocalStorageService {
      * @param file 文件
      * @return
      */
-    LocalStorage create(String name, MultipartFile file);
+    LocalStorage create(String name, MultipartFile file,Long courseId);
 
     /**
      * 编辑

@@ -26,7 +26,6 @@ import me.wang.domain.LocalStorage;
 import me.wang.service.dto.LocalStorageDto;
 import me.wang.service.dto.LocalStorageQueryCriteria;
 import me.wang.exception.BadRequestException;
-import me.wang.utils.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.io.File;
@@ -72,7 +71,7 @@ public class LocalStorageServiceImpl implements LocalStorageService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public LocalStorage create(String name, MultipartFile multipartFile) {
+    public LocalStorage create(String name, MultipartFile multipartFile,Long courseId) {
         FileUtil.checkSize(properties.getMaxSize(), multipartFile.getSize());
         String suffix = FileUtil.getExtensionName(multipartFile.getOriginalFilename());
         String type = FileUtil.getFileType(suffix);
@@ -80,6 +79,7 @@ public class LocalStorageServiceImpl implements LocalStorageService {
         if(ObjectUtil.isNull(file)){
             throw new BadRequestException("上传失败");
         }
+
         try {
             name = StringUtils.isBlank(name) ? FileUtil.getFileNameNoEx(multipartFile.getOriginalFilename()) : name;
             LocalStorage localStorage = new LocalStorage(
@@ -88,7 +88,8 @@ public class LocalStorageServiceImpl implements LocalStorageService {
                     suffix,
                     file.getPath(),
                     type,
-                    FileUtil.getSize(multipartFile.getSize())
+                    FileUtil.getSize(multipartFile.getSize()),
+                    courseId
             );
             return localStorageRepository.save(localStorage);
         }catch (Exception e){

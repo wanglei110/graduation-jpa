@@ -97,18 +97,18 @@ public class CourseController {
 
 
 
-    @AnonymousAccess
-    @GetMapping("/get_course_video")
-    public ResponseEntity<Object> getCourseVideo(HttpServletRequest request, HttpServletResponse response,@RequestParam Long courseId){
-        courseService.getCourseVideo(request,response,courseId);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    @PostMapping("upload_file")
-    @AnonymousAccess
-    public ResponseEntity<Object> createFile(@RequestParam String name, @RequestParam MultipartFile file,@RequestParam Long courseId){
-        courseService.upload(name, file,courseId);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
+//    @AnonymousAccess
+//    @GetMapping("/get_course_video")
+//    public ResponseEntity<Object> getCourseVideo(HttpServletRequest request, HttpServletResponse response,@RequestParam Long courseId){
+//        courseService.getCourseVideo(request,response,courseId);
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
+//
+//    @PostMapping("upload_file")
+//    @AnonymousAccess
+//    public ResponseEntity<Object> createFile(@RequestParam String name, @RequestParam MultipartFile file,@RequestParam Long courseId){
+//        courseService.upload(name, file,courseId);
+//        return new ResponseEntity<>(HttpStatus.CREATED);
+//    }
 
 }

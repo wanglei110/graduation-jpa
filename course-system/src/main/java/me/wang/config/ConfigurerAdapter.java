@@ -54,10 +54,15 @@ public class ConfigurerAdapter implements WebMvcConfigurer {
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
+        //允许证书
         config.setAllowCredentials(true);
+        //允许跨域请求的域名
         config.addAllowedOrigin("*");
+        //允许的请求头
         config.addAllowedHeader("*");
+        //允许的方法
         config.addAllowedMethod("*");
+        //
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
@@ -67,22 +72,31 @@ public class ConfigurerAdapter implements WebMvcConfigurer {
         FileProperties.ElPath path = properties.getPath();
         String avatarUtl = "file:" + path.getAvatar().replace("\\","/");
         String pathUtl = "file:" + path.getPath().replace("\\","/");
+        //映射本地文件，路径在配置文件中配置
         registry.addResourceHandler("/avatar/**").addResourceLocations(avatarUtl).setCachePeriod(0);
         registry.addResourceHandler("/file/**").addResourceLocations(pathUtl).setCachePeriod(0);
         registry.addResourceHandler("/**").addResourceLocations("classpath:/META-INF/resources/").setCachePeriod(0);
     }
 
+    /**
+     * 消息转换器
+     * */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         // 使用 fastjson 序列化，会导致 @JsonIgnore 失效，可以使用 @JSONField(serialize = false) 替换
         FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();
         List<MediaType> supportMediaTypeList = new ArrayList<>();
+
+        //设置为json格式
         supportMediaTypeList.add(MediaType.APPLICATION_JSON);
         FastJsonConfig config = new FastJsonConfig();
+        //设置时间格式
         config.setDateFormat("yyyy-MM-dd HH:mm:ss");
+        //消除对同一对象循环引用的问题
         config.setSerializerFeatures(SerializerFeature.DisableCircularReferenceDetect);
         converter.setFastJsonConfig(config);
         converter.setSupportedMediaTypes(supportMediaTypeList);
+        //设置为utf-8编码
         converter.setDefaultCharset(StandardCharsets.UTF_8);
         converters.add(converter);
     }

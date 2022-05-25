@@ -149,8 +149,10 @@ public class UserController {
     @ApiOperation("修改密码")
     @PostMapping(value = "/updatePass")
     public ResponseEntity<Object> updateUserPass(@RequestBody UserPassVo passVo) throws Exception {
+        //根据RSA私钥对密码进行解密
         String oldPass = RsaUtils.decryptByPrivateKey(RsaProperties.privateKey,passVo.getOldPass());
         String newPass = RsaUtils.decryptByPrivateKey(RsaProperties.privateKey,passVo.getNewPass());
+        //获取当前登录用户信息
         UserDto user = userService.findByName(SecurityUtils.getCurrentUsername());
         if(!passwordEncoder.matches(oldPass, user.getPassword())){
             throw new BadRequestException("修改失败，旧密码错误");
@@ -158,6 +160,7 @@ public class UserController {
         if(passwordEncoder.matches(newPass, user.getPassword())){
             throw new BadRequestException("新密码不能与旧密码相同");
         }
+        //将RSA解密后的密码用Spring Security的加密功能对密码进行加密再存储到数据库中
         userService.updatePass(user.getUsername(),passwordEncoder.encode(newPass));
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -167,20 +170,6 @@ public class UserController {
     public ResponseEntity<Object> updateUserAvatar(@RequestParam MultipartFile avatar){
         return new ResponseEntity<>(userService.updateAvatar(avatar), HttpStatus.OK);
     }
-
-//    @Log("修改邮箱")
-//    @ApiOperation("修改邮箱")
-//    @PostMapping(value = "/updateEmail/{code}")
-//    public ResponseEntity<Object> updateUserEmail(@PathVariable String code,@RequestBody User user) throws Exception {
-//        String password = RsaUtils.decryptByPrivateKey(RsaProperties.privateKey,user.getPassword());
-//        UserDto userDto = userService.findByName(SecurityUtils.getCurrentUsername());
-//        if(!passwordEncoder.matches(password, userDto.getPassword())){
-//            throw new BadRequestException("密码错误");
-//        }
-//        verificationCodeService.validated(CodeEnum.EMAIL_RESET_EMAIL_CODE.getKey() + user.getEmail(), code);
-//        userService.updateEmail(userDto.getUsername(),user.getEmail());
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
 
     /**
      * 如果当前用户的角色级别低于创建用户的角色级别，则抛出权限不足的错误
@@ -198,7 +187,6 @@ public class UserController {
     @GetMapping(value = "/query_id")
     @Log("返回当前登录用户id")
     @ApiOperation("返回当前登录用户id")
-//    @PreAuthorize("@el.check('course:list')")
     public ResponseEntity<Object> queryId(){
         return new ResponseEntity<>(SecurityUtils.getCurrentUserId(),HttpStatus.OK);
     }

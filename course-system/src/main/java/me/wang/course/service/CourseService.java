@@ -76,10 +76,10 @@ public interface CourseService {
     */
     void deleteAll(Long[] ids);
 
-    /**
-     *获取对应课程的视频
-     * */
-    void getCourseVideo(HttpServletRequest request, HttpServletResponse response,Long courseId);
-
-    void upload(String name, MultipartFile file, Long courseId);
+//    /**
+//     *获取对应课程的视频
+//     * */
+//    void getCourseVideo(HttpServletRequest request, HttpServletResponse response,Long courseId);
+//
+//    void upload(String name, MultipartFile file, Long courseId);
 }

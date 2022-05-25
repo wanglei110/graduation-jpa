@@ -6,7 +6,6 @@
       <module fileurl="file://$PROJECT_DIR$/course-common/course-common.iml" filepath="$PROJECT_DIR$/course-common/course-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/course-logging/course-logging.iml" filepath="$PROJECT_DIR$/course-logging/course-logging.iml" />
       <module fileurl="file://$PROJECT_DIR$/course-system/course-system.iml" filepath="$PROJECT_DIR$/course-system/course-system.iml" />
-      <module fileurl="file://$PROJECT_DIR$/course-tools/course-tools.iml" filepath="$PROJECT_DIR$/course-tools/course-tools.iml" />
     </modules>
   </component>
 </project>

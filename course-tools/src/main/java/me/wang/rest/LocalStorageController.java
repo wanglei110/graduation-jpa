@@ -22,6 +22,7 @@ import me.wang.domain.LocalStorage;
 import me.wang.exception.BadRequestException;
 import me.wang.service.dto.LocalStorageQueryCriteria;
 import me.wang.utils.FileUtil;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,20 +63,23 @@ public class LocalStorageController {
     @PostMapping
     @ApiOperation("上传文件")
     @PreAuthorize("@el.check('storage:add')")
-    public ResponseEntity<Object> createFile(@RequestParam String name, @RequestParam("file") MultipartFile file){
-        localStorageService.create(name, file);
+    public ResponseEntity<Object> createFile(@RequestParam String name, @RequestParam("file") MultipartFile file,@RequestParam(required = false) Long courseId){
+        if(ObjectUtils.isEmpty(courseId)){
+            courseId=-1L;
+        }
+        localStorageService.create(name, file, courseId);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @ApiOperation("上传图片")
     @PostMapping("/pictures")
-    public ResponseEntity<Object> uploadPicture(@RequestParam MultipartFile file){
+    public ResponseEntity<Object> uploadPicture(@RequestParam MultipartFile file,@RequestParam(required = false) Long courseId){
         // 判断文件是否为图片
         String suffix = FileUtil.getExtensionName(file.getOriginalFilename());
         if(!FileUtil.IMAGE.equals(FileUtil.getFileType(suffix))){
             throw new BadRequestException("只能上传图片");
         }
-        LocalStorage localStorage = localStorageService.create(null, file);
+        LocalStorage localStorage = localStorageService.create(null, file,courseId);
         return new ResponseEntity<>(localStorage, HttpStatus.OK);
     }
 

@@ -9,6 +9,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/course-generator/pom.xml" />
+        <option value="$PROJECT_DIR$/course-tools/pom.xml" />
       </set>
     </option>
   </component>

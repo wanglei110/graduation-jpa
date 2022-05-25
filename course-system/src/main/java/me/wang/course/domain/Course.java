@@ -92,9 +92,9 @@ public class Course implements Serializable {
     @ApiModelProperty(value = "开课学期")
     private Integer semester;
 
-//    @Column(name = "video_path")
-//    @ApiModelProperty(value = "视频路径")
-//    private String videoPath;
+    @Column(name = "video_path")
+    @ApiModelProperty(value = "视频路径")
+    private String videoPath;
 
 
     @ManyToOne
@@ -110,6 +110,9 @@ public class Course implements Serializable {
             inverseJoinColumns = @JoinColumn(name="ideo_id",referencedColumnName = "id")
     )
     private Set<Ideo> ideos;
+
+    @Column(name = "ideo_ids")
+    private String ideoIds;
 
     @Column(name = "video_id")
     @ApiModelProperty(value = "视频id")

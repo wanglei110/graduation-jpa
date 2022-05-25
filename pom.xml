@@ -14,7 +14,6 @@
         <module>course-logging</module>
         <module>course-system</module>
         <module>course-tools</module>
-        <module>course-generator</module>
     </modules>
 
     <name>课程思政管理系统</name>

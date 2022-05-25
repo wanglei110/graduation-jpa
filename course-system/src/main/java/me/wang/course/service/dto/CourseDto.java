@@ -70,6 +70,9 @@ public class CourseDto implements Serializable {
     /**视频路径*/
     private Long videoId;
 
+    /**视频路径*/
+    private String videoPath;
+
     private CourseUser user;
 
     private Set<IdeoDto> ideos;

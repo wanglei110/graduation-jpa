@@ -73,15 +73,14 @@ public class AuthorizationController {
     @ApiOperation("登录授权")
     @AnonymousPostMapping(value = "/login")
     public ResponseEntity<Object> login(@Validated @RequestBody AuthUserDto authUser, HttpServletRequest request)  {
-        // 密码解密
         String password;
         try {
+            // 根据私钥将密码解密
             password = RsaUtils.decryptByPrivateKey(RsaProperties.privateKey, authUser.getPassword());
         }catch (Exception e){
             throw new BadRequestException("密码解密错误！");
         }
-//        String password = RsaUtils.decryptByPrivateKey(RsaProperties.privateKey, authUser.getPassword());
-        // 查询验证码
+        // 从缓存中查询验证码
         String code = (String) redisUtils.get(authUser.getUuid());
         // 清除验证码
         redisUtils.del(authUser.getUuid());
@@ -95,16 +94,13 @@ public class AuthorizationController {
                 new UsernamePasswordAuthenticationToken(authUser.getUsername(), password);
         Authentication authentication;
         try {
+            //验证用户名和密码
             authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
         }catch (Exception e){
             throw new BadRequestException("用户名或密码错误！");
         }
-//        Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        // 生成令牌与第三方系统获取令牌方式
-        // UserDetails userDetails = userDetailsService.loadUserByUsername(userInfo.getUsername());
-        // Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-        // SecurityContextHolder.getContext().setAuthentication(authentication);
+        //生成token
         String token = tokenProvider.createToken(authentication);
         final JwtUserDto jwtUserDto = (JwtUserDto) authentication.getPrincipal();
         // 保存在线信息
@@ -151,6 +147,7 @@ public class AuthorizationController {
     @ApiOperation("退出登录")
     @AnonymousDeleteMapping(value = "/logout")
     public ResponseEntity<Object> logout(HttpServletRequest request) {
+
         onlineUserService.logout(tokenProvider.getToken(request));
         return new ResponseEntity<>(HttpStatus.OK);
     }
