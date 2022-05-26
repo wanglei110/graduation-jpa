@@ -19,7 +19,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 /**
- * 异常工具 2022-01-06
+ * 异常工具 2022-04-06
  * @author
  */
 public class ThrowableUtil {

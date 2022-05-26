@@ -18,7 +18,7 @@ package me.wang.utils;
 
 /**
  * @author: liaojinlong
- * @date: 2022/6/9 17:02
+ * @date: 2022/5/9 17:02
  * @since: 1.0
  * @see {@link SpringContextHolder}
  * 针对某些初始化方法，在SpringContextHolder 初始化前时，<br>

@@ -19,7 +19,7 @@ package me.wang.exception;
  * 统一关于错误配置信息 异常
  *
  * @author: liaojinlong
- * @date: 2022/6/10 18:06
+ * @date: 2022/5/10 18:06
  */
 public class BadConfigurationException extends RuntimeException {
     /**

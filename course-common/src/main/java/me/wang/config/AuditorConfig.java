@@ -22,8 +22,8 @@ import java.util.Optional;
 
 /**
  * @description  : 设置审计
- * @author  : Dong ZhaoYang
- * @date : 2022/10/28
+ * @author  :
+ * @date : 2022
  */
 @Component("auditorAware")
 public class AuditorConfig implements AuditorAware<String> {

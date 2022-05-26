@@ -17,7 +17,7 @@ package me.wang.utils;
 
 /**
  * @author: liaojinlong
- * @date: 2022/6/11 15:49
+ * @date: 2022/5/11 15:49
  * @apiNote: 关于缓存的Key集合
  */
 public interface CacheKey {
